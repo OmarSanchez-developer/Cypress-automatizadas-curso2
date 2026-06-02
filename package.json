@@ -1,0 +1,12 @@
+{
+  "name": "curso-modulo-1",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "Omar Sánchez",
+  "type": "commonjs",
+  "main": "cypress.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
