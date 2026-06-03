@@ -62,8 +62,22 @@ describe('example to-do app', () => {
   })
 
         //Escribir en campos de texto
-  it.only("Escribir en campos de texto", () => {
-    cy.get('[data-at="practice-name"]').type('Omar', {force: true}) //fuerza para escribir en un elemento web anterior como un div
+  it("Escribir en campos de texto", () => {
+    cy.get('[data-at="practice-name"]').type('Omar', {force: true}) //fuerza para escribir sin importar lo que haya adelante del elemento web anterior como un div
     cy.get(':nth-child(2) > .bg-gray-50').type('123') //{enter} oculta contraseña
   })
+      //Llenar y enviar Formulario dando click al botón de envíar.
+   it.only("Llenar form y enviar", () => {
+    cy.get('[data-at="practice-submit"]').should('be.disabled')
+    cy.get('[data-at="practice-name"]').type('Omar', {force: true})
+    cy.get(':nth-child(2) > .bg-gray-50').type('123') //{enter} oculta contraseña
+    cy.get('#sch_Mañana').click()
+    cy.get('[data-at="practice-country"]').select('Colombia')
+    cy.get('[data-at="practice-interests-devops"]').check()
+    cy.get('[data-at="practice-submit"]').should('be.disabled')
+    cy.get('[data-at="practice-dateOfBirth"]').type('1987-03-19') //{upArrow}')
+    cy.get('[data-at="practice-submit"]').should('be.enabled')
+    cy.get('[data-at="practice-submit"]').click({force:true})
+    cy.get('.swal2-confirm').click()
+   })
 })
