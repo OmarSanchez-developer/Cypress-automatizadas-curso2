@@ -46,7 +46,6 @@ describe('example to-do app', () => {
       should('be.checked')
     cy.get('[data-at="practice-interests-development"]').
       should('not.be.checked')
-  
   })
 
       //Manejo dropdown
@@ -54,12 +53,17 @@ describe('example to-do app', () => {
     cy.get('[data-at="practice-country"]').select('Colombia')
     cy.get('[data-at="practice-country"]').should('be.visible').and('have.value', 'Colombia')
   })
-
         //Manejo de Radio  Button
-  it.only("manejo de radio button", () => {
+  it("manejo de radio button", () => {
     cy.get('#sch_Mañana').click()
     cy.get('#sch_Mañana').should('be.checked')
     cy.get('#sch_Tarde').should('not.be.checked')
     cy.get('#sch_Noche').should('not.be.checked')
+  })
+
+        //Escribir en campos de texto
+  it.only("Escribir en campos de texto", () => {
+    cy.get('[data-at="practice-name"]').type('Omar', {force: true}) //fuerza para escribir en un elemento web anterior como un div
+    cy.get(':nth-child(2) > .bg-gray-50').type('123') //{enter} oculta contraseña
   })
 })
