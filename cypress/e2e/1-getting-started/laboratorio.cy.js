@@ -50,8 +50,16 @@ describe('example to-do app', () => {
   })
 
       //Manejo dropdown
-  it.only("manejo de dropdown", () => {
+  it("manejo de dropdown", () => {
     cy.get('[data-at="practice-country"]').select('Colombia')
     cy.get('[data-at="practice-country"]').should('be.visible').and('have.value', 'Colombia')
+  })
+
+        //Manejo de Radio  Button
+  it.only("manejo de radio button", () => {
+    cy.get('#sch_Mañana').click()
+    cy.get('#sch_Mañana').should('be.checked')
+    cy.get('#sch_Tarde').should('not.be.checked')
+    cy.get('#sch_Noche').should('not.be.checked')
   })
 })
