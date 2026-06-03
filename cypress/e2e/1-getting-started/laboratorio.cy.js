@@ -39,7 +39,7 @@ describe('example to-do app', () => {
   })
 
   // Se llena Formulario y se marcan checked de interés
-  it.only('Check and uncheck', () => {
+  it('Check and uncheck', () => {
     cy.get('[data-at="practice-interests-manual"]').check()
     cy.get('[data-at="practice-interests-devops"]').check()
     cy.get('[data-at="practice-interests-manual"]').
@@ -47,5 +47,11 @@ describe('example to-do app', () => {
     cy.get('[data-at="practice-interests-development"]').
       should('not.be.checked')
   
+  })
+
+      //Manejo dropdown
+  it.only("manejo de dropdown", () => {
+    cy.get('[data-at="practice-country"]').select('Colombia')
+    cy.get('[data-at="practice-country"]').should('be.visible').and('have.value', 'Colombia')
   })
 })
